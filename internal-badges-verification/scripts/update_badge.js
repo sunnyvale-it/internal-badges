@@ -9,7 +9,13 @@ async function updateBadge() {
   }
 
   const payload = JSON.parse(fs.readFileSync(payloadPath, 'utf8'));
-  const { user, badge_id, badge_name, issuer, level, proof_url } = payload;
+  const { user, badge_id, issuer, level, proof_url } = payload;
+
+  const badgeNames = {
+    "mcp-engineer": "MCP Engineer",
+    // Add other badge mappings here as needed
+  };
+  const resolvedBadgeName = badgeNames[badge_id] || badge_id;
 
   if (!user || !badge_id) {
     console.error('Missing user or badge_id in payload');
@@ -32,7 +38,7 @@ async function updateBadge() {
   // Construct badge payload
   const badgeData = {
     badge_id: badge_id,
-    name: badge_name || badge_id,
+    name: resolvedBadgeName,
     version: "1.3.0",
     user: user,
     acquired_at: acquiredAt,

@@ -21,7 +21,7 @@ Alongside every `badge.json` file, you will find a `badge.json.bundle` file cont
 
 ```bash
 cosign verify-blob \
-  --certificate-identity "https://github.com/sunnyvale-it/internal-badges-verification/.github/workflows/issue_badge.yml@refs/heads/main" \
+  --certificate-identity "https://github.com/sunnyvale-it/internal-badges/.github/workflows/issue_badge.yml@refs/heads/master" \
   --certificate-oidc-issuer "https://token.actions.githubusercontent.com" \
   --bundle path/to/badge.json.bundle \
   path/to/badge.json
