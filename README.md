@@ -44,6 +44,26 @@ Check out the [BADGES.md](BADGES.md) file for examples on how to dynamically ren
 
 ---
 
+### Manual Trigger via GitHub CLI (Testing)
+
+You can manually trigger the badge issuance pipeline right from your terminal using the GitHub CLI (`gh`). This is useful for testing or manually issuing badges without the Google Form:
+
+```bash
+echo '{
+  "event_type": "issue_badge",
+  "client_payload": {
+    "user": "example.user",
+    "badge_id": "mcp-engineer",
+    "version": "1.0.0",
+    "issuer": "Engineering Academy",
+    "level": "expert",
+    "proof_url": "https://example.com/proof"
+  }
+}' | gh api repos/sunnyvale-it/internal-badges/dispatches --input -
+```
+
+---
+
 ### Setup Instructions (Admin)
 
 1. **Scripts**: Validation and badge generation logic are located in the `scripts/` directory of this repository.
