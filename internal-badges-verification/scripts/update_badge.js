@@ -9,7 +9,7 @@ async function updateBadge() {
   }
 
   const payload = JSON.parse(fs.readFileSync(payloadPath, 'utf8'));
-  const { user, badge_id, issuer, level, proof_url } = payload;
+  const { user, badge_id, badge_name, issuer, level, proof_url } = payload;
 
   if (!user || !badge_id) {
     console.error('Missing user or badge_id in payload');
@@ -32,6 +32,7 @@ async function updateBadge() {
   // Construct badge payload
   const badgeData = {
     badge_id: badge_id,
+    name: badge_name || badge_id,
     version: "1.3.0",
     user: user,
     acquired_at: acquiredAt,

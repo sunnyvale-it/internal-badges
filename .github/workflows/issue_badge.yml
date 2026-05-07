@@ -4,6 +4,10 @@ on:
   repository_dispatch:
     types: [issue_badge]
 
+permissions:
+  contents: write
+  id-token: write
+
 jobs:
   validate_and_issue:
     runs-on: ubuntu-latest
@@ -22,6 +26,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@v3.5.0
 
       - name: Save Payload to File
         run: |
@@ -38,11 +45,20 @@ jobs:
           PAYLOAD_FILE: payload.json
         run: |
           node internal-badges-verification/scripts/update_badge.js
+          
+      - name: Sign Badge with Cosign
+        run: |
+          USER_PAYLOAD="${{ github.event.client_payload.user }}"
+          BADGE_ID_PAYLOAD="${{ github.event.client_payload.badge_id }}"
+          BADGE_FILE="badges/${USER_PAYLOAD}/${BADGE_ID_PAYLOAD}.json"
+          
+          # Keyless sign the badge and output the bundle
+          cosign sign-blob --yes --bundle "${BADGE_FILE}.bundle" "${BADGE_FILE}"
 
       - name: Commit and Push Badge
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add badges/
-          git commit -m "Issue badge for ${{ github.event.client_payload.user }} - ${{ github.event.client_payload.badge_id }}"
+          git commit -m "Issue badge and sigstore bundle for ${{ github.event.client_payload.user }} - ${{ github.event.client_payload.badge_id }}"
           git push
