@@ -25,14 +25,6 @@ jobs:
       - name: Install Cosign
         uses: sigstore/cosign-installer@v3.5.0
 
-      #- name: Run Validation
-      #  env:
-      #    PAYLOAD_USER: ${{ github.event.client_payload.user }}
-      #    PAYLOAD_BADGE_ID: ${{ github.event.client_payload.badge_id }}
-      #    PAYLOAD_PROOF_URL: ${{ github.event.client_payload.proof_url }}
-      #    PAYLOAD_REPOSITORY: ${{ github.event.client_payload.repository }}
-      #  run: |
-      #    node scripts/validate_proof.js
 
       - name: Generate Badge JSON
         id: generate
