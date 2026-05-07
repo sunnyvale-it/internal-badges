@@ -41,6 +41,7 @@ jobs:
       #    node internal-badges-verification/scripts/validate_proof.js
 
       - name: Generate Badge JSON
+        id: generate
         env:
           PAYLOAD_FILE: payload.json
         run: |
@@ -52,8 +53,15 @@ jobs:
           BADGE_ID_PAYLOAD="${{ github.event.client_payload.badge_id }}"
           BADGE_FILE="badges/${USER_PAYLOAD}/${BADGE_ID_PAYLOAD}.json"
           
-          # Keyless sign the badge and output the bundle
-          cosign sign-blob --yes --bundle "${BADGE_FILE}.bundle" "${BADGE_FILE}"
+          BADGE_GENERATED="${{ steps.generate.outputs.badge_generated }}"
+          
+          if [ "$BADGE_GENERATED" == "false" ] && [ -f "${BADGE_FILE}.bundle" ]; then
+            echo "Badge version matches and bundle exists. Skipping re-signing."
+          else
+            echo "Generating fresh signature..."
+            # Keyless sign the badge and output the bundle
+            cosign sign-blob --yes --bundle "${BADGE_FILE}.bundle" "${BADGE_FILE}"
+          fi
           
           # Calculate SHA256 and create query link
           SHA256_HASH=$(shasum -a 256 "${BADGE_FILE}" | awk '{print $1}')

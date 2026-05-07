@@ -9,7 +9,7 @@ async function updateBadge() {
   }
 
   const payload = JSON.parse(fs.readFileSync(payloadPath, 'utf8'));
-  const { user, badge_id, issuer, level, proof_url } = payload;
+  const { user, badge_id, version, issuer, level, proof_url } = payload;
 
   const badgeNames = {
     "mcp-engineer": "MCP Engineer",
@@ -32,26 +32,48 @@ async function updateBadge() {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
-  // Format the current date
-  const acquiredAt = new Date().toISOString().split('T')[0];
+  const TARGET_VERSION = version || "1.0.0";
 
-  // Construct badge payload
-  const badgeData = {
-    badge_id: badge_id,
-    name: resolvedBadgeName,
-    version: "1.3.0",
-    user: user,
-    acquired_at: acquiredAt,
-    status: "active",
-    proof: proof_url || "github-actions-pass",
-    metadata: {
-      issuer: issuer || "Engineering Academy",
-      level: level || "advanced"
+  let shouldGenerate = true;
+  if (fs.existsSync(outputFile)) {
+    try {
+      const existingData = JSON.parse(fs.readFileSync(outputFile, 'utf8'));
+      if (existingData.version === TARGET_VERSION) {
+        console.log(`Badge ${badge_id} for user ${user} already exists at version ${TARGET_VERSION}. Skipping generation.`);
+        shouldGenerate = false;
+      }
+    } catch (e) {
+      console.warn('Could not parse existing badge file. It will be overwritten.');
     }
-  };
+  }
 
-  fs.writeFileSync(outputFile, JSON.stringify(badgeData, null, 2), 'utf8');
-  console.log(`Successfully generated badge JSON at ${outputFile}`);
+  if (shouldGenerate) {
+    // Format the current date
+    const acquiredAt = new Date().toISOString().split('T')[0];
+
+    // Construct badge payload
+    const badgeData = {
+      badge_id: badge_id,
+      name: resolvedBadgeName,
+      version: TARGET_VERSION,
+      user: user,
+      acquired_at: acquiredAt,
+      status: "active",
+      proof: proof_url || "github-actions-pass",
+      metadata: {
+        issuer: issuer || "Engineering Academy",
+        level: level || "advanced"
+      }
+    };
+
+    fs.writeFileSync(outputFile, JSON.stringify(badgeData, null, 2), 'utf8');
+    console.log(`Successfully generated badge JSON at ${outputFile}`);
+  }
+
+  // Tell GitHub Actions whether we actually generated a new file or not
+  if (process.env.GITHUB_OUTPUT) {
+    fs.appendFileSync(process.env.GITHUB_OUTPUT, `badge_generated=${shouldGenerate}\n`);
+  }
 }
 
 updateBadge().catch(err => {
