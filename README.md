@@ -29,6 +29,13 @@ cosign verify-blob \
 
 *(Note: Verify the `certificate-identity` matches the branch/workflow of the verification repository).*
 
+### Verify Online via Web UI
+
+If you don't have `cosign` installed, you can still verify the transparency log entry online:
+1. Calculate the SHA256 hash of the `badge.json` file. (e.g., `shasum -a 256 badge.json`)
+2. Go to [search.sigstore.dev](https://search.sigstore.dev/).
+3. Paste the SHA256 hash into the search bar. It will display the exact timestamp and workflow identity that signed that specific file!
+
 ## How to display your badge
 
 You can embed your dynamic badge anywhere that supports Markdown, like your GitHub profile or an internal wiki, using Shields.io.
