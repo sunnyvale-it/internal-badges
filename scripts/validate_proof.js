@@ -1,15 +1,10 @@
 const fs = require('fs');
 
 async function validate() {
-  // Read payload passed from the GitHub Action
-  const payloadPath = process.env.PAYLOAD_FILE;
-  if (!payloadPath || !fs.existsSync(payloadPath)) {
-    console.error('Payload file not found.');
-    process.exit(1);
-  }
-
-  const payload = JSON.parse(fs.readFileSync(payloadPath, 'utf8'));
-  const { user, badge_id, proof_url, repository } = payload;
+  const user = process.env.PAYLOAD_USER;
+  const badge_id = process.env.PAYLOAD_BADGE_ID;
+  const proof_url = process.env.PAYLOAD_PROOF_URL;
+  const repository = process.env.PAYLOAD_REPOSITORY;
 
   console.log(`Validating proof for user: ${user}, badge: ${badge_id}`);
 

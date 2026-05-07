@@ -46,8 +46,7 @@ Check out the [BADGES.md](BADGES.md) file for examples on how to dynamically ren
 
 ### Setup Instructions (Admin)
 
-1. **Private Repository**: Set up a separate private repository `internal-badges-verification` to hold the `scripts/validate_proof.js` and `scripts/update_badge.js`.
+1. **Scripts**: Validation and badge generation logic are located in the `scripts/` directory of this repository.
 2. **Secrets**: 
-   - Add a Personal Access Token (PAT) with access to the private verification repo as `VERIFICATION_REPO_PAT` in this public repository's GitHub Action secrets.
    - Add a PAT with `repo` access to the Google Apps Script so it can trigger the `repository_dispatch` event on this repository.
-3. **Google Apps Script**: Copy the contents of `apps-script/Code.gs` into your Google Sheet's Apps Script editor and set up an `onFormSubmit` trigger.
+3. **Google Apps Script**: Copy the contents of `scripts/Code.gs` into your Google Sheet's Apps Script editor and set up an `onFormSubmit` trigger.

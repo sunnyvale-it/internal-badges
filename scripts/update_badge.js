@@ -2,14 +2,12 @@ const fs = require('fs');
 const path = require('path');
 
 async function updateBadge() {
-  const payloadPath = process.env.PAYLOAD_FILE;
-  if (!payloadPath || !fs.existsSync(payloadPath)) {
-    console.error('Payload file not found.');
-    process.exit(1);
-  }
-
-  const payload = JSON.parse(fs.readFileSync(payloadPath, 'utf8'));
-  const { user, badge_id, version, issuer, level, proof_url } = payload;
+  const user = process.env.PAYLOAD_USER;
+  const badge_id = process.env.PAYLOAD_BADGE_ID;
+  const version = process.env.PAYLOAD_VERSION;
+  const issuer = process.env.PAYLOAD_ISSUER;
+  const level = process.env.PAYLOAD_LEVEL;
+  const proof_url = process.env.PAYLOAD_PROOF_URL;
 
   const badgeNames = {
     "mcp-engineer": "MCP Engineer",
@@ -22,9 +20,9 @@ async function updateBadge() {
     process.exit(1);
   }
 
-  // The output directory is expected to be in the public repository
-  // We assume the script runs from the verification repo, so we go up one level
-  const outputDir = path.join(__dirname, '..', '..', 'badges', user);
+  // The output directory is expected to be in the root repository
+  // We assume the script runs from the scripts repo, so we go up one level
+  const outputDir = path.join(__dirname, '..', 'badges', user);
   const outputFile = path.join(outputDir, `${badge_id}.json`);
 
   // Ensure directory exists

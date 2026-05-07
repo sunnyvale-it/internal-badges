@@ -15,12 +15,7 @@ jobs:
       - name: Checkout Public Repository
         uses: actions/checkout@v4
 
-      #- name: Checkout Private Verification Subrepo
-      #  uses: actions/checkout@v4
-      #  with:
-      #    repository: sunnyvale-it/internal-badges-verification # Update this with the correct org/repo
-      #    token: ${{ secrets.VERIFICATION_REPO_PAT }}
-      #    path: internal-badges-verification
+
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -30,22 +25,26 @@ jobs:
       - name: Install Cosign
         uses: sigstore/cosign-installer@v3.5.0
 
-      - name: Save Payload to File
-        run: |
-          echo '${{ toJson(github.event.client_payload) }}' > payload.json
-        
       #- name: Run Validation
       #  env:
-      #    PAYLOAD_FILE: payload.json
+      #    PAYLOAD_USER: ${{ github.event.client_payload.user }}
+      #    PAYLOAD_BADGE_ID: ${{ github.event.client_payload.badge_id }}
+      #    PAYLOAD_PROOF_URL: ${{ github.event.client_payload.proof_url }}
+      #    PAYLOAD_REPOSITORY: ${{ github.event.client_payload.repository }}
       #  run: |
-      #    node internal-badges-verification/scripts/validate_proof.js
+      #    node scripts/validate_proof.js
 
       - name: Generate Badge JSON
         id: generate
         env:
-          PAYLOAD_FILE: payload.json
+          PAYLOAD_USER: ${{ github.event.client_payload.user }}
+          PAYLOAD_BADGE_ID: ${{ github.event.client_payload.badge_id }}
+          PAYLOAD_VERSION: ${{ github.event.client_payload.version }}
+          PAYLOAD_ISSUER: ${{ github.event.client_payload.issuer }}
+          PAYLOAD_LEVEL: ${{ github.event.client_payload.level }}
+          PAYLOAD_PROOF_URL: ${{ github.event.client_payload.proof_url }}
         run: |
-          node internal-badges-verification/scripts/update_badge.js
+          node scripts/update_badge.js
           
       - name: Sign Badge with Cosign
         run: |
@@ -74,10 +73,8 @@ jobs:
           echo "**Rekor Verification Link:** [Search on Sigstore]($REKOR_URL)" >> $GITHUB_STEP_SUMMARY
 
       - name: Update BADGES.md Link
-        env:
-          PAYLOAD_FILE: payload.json
         run: |
-          node internal-badges-verification/scripts/update_readme_hash.js
+          node scripts/generate_badges_md.js
 
       - name: Commit and Push Badge
         run: |
