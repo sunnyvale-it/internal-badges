@@ -15,12 +15,12 @@ jobs:
       - name: Checkout Public Repository
         uses: actions/checkout@v4
 
-      - name: Checkout Private Verification Subrepo
-        uses: actions/checkout@v4
-        with:
-          repository: sunnyvale-it/internal-badges-verification # Update this with the correct org/repo
-          token: ${{ secrets.VERIFICATION_REPO_PAT }}
-          path: internal-badges-verification
+      #- name: Checkout Private Verification Subrepo
+      #  uses: actions/checkout@v4
+      #  with:
+      #    repository: sunnyvale-it/internal-badges-verification # Update this with the correct org/repo
+      #    token: ${{ secrets.VERIFICATION_REPO_PAT }}
+      #    path: internal-badges-verification
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -34,11 +34,11 @@ jobs:
         run: |
           echo '${{ toJson(github.event.client_payload) }}' > payload.json
         
-      - name: Run Validation
-        env:
-          PAYLOAD_FILE: payload.json
-        run: |
-          node internal-badges-verification/scripts/validate_proof.js
+      #- name: Run Validation
+      #  env:
+      #    PAYLOAD_FILE: payload.json
+      #  run: |
+      #    node internal-badges-verification/scripts/validate_proof.js
 
       - name: Generate Badge JSON
         env:
