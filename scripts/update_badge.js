@@ -38,9 +38,20 @@ async function updateBadge() {
   if (fs.existsSync(outputFile)) {
     try {
       const existingData = JSON.parse(fs.readFileSync(outputFile, 'utf8'));
+      
+      const existingGradeStr = existingData.metadata && existingData.metadata.grade ? existingData.metadata.grade : "0";
+      const newGradeStr = grade || "0";
+      
+      const existingGrade = parseFloat(existingGradeStr) || 0;
+      const newGrade = parseFloat(newGradeStr) || 0;
+
       if (existingData.version === TARGET_VERSION) {
-        console.log(`Badge ${badge_id} for user ${user} already exists at version ${TARGET_VERSION}. Skipping generation.`);
-        shouldGenerate = false;
+        if (newGrade <= existingGrade) {
+          console.log(`Badge ${badge_id} for user ${user} already exists at version ${TARGET_VERSION} with grade ${existingGradeStr}. New grade ${newGradeStr} is not higher. Skipping generation.`);
+          shouldGenerate = false;
+        } else {
+          console.log(`New grade ${newGradeStr} is higher than existing ${existingGradeStr}. Generating new badge.`);
+        }
       }
     } catch (e) {
       console.warn('Could not parse existing badge file. It will be overwritten.');
