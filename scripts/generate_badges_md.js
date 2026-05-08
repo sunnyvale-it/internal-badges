@@ -27,7 +27,7 @@ Here is the directory of all users and their dynamically rendered badges via Shi
 
 *(Note: If badges display as "invalid" or "not found", ensure that this repository is set to **Public** on GitHub and that the JSON files have been pushed to the \`master\` branch).*
 
-### MCP Engineer Certifications
+### Secure Service Developer Certifications
 
 | User | Badge | Status | Level | Version | Issuer | Acquired At | Signature |
 |------|-------|--------|-------|---------|--------|-------------|-----------|

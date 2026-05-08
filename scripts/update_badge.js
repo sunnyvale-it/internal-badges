@@ -10,7 +10,7 @@ async function updateBadge() {
   const proof_url = process.env.PAYLOAD_PROOF_URL;
 
   const badgeNames = {
-    "mcp-engineer": "MCP Engineer",
+    "secure-service-dev": "Secure Service Developer",
     // Add other badge mappings here as needed
   };
   const resolvedBadgeName = badgeNames[badge_id] || badge_id;

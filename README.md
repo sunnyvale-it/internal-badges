@@ -53,7 +53,7 @@ echo '{
   "event_type": "issue_badge",
   "client_payload": {
     "user": "example.user",
-    "badge_id": "mcp-engineer",
+    "badge_id": "secure-service-dev",
     "version": "1.0.0",
     "issuer": "Engineering Academy",
     "level": "expert",
