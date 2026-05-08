@@ -16,7 +16,8 @@ function onFormSubmit(e) {
       user: user,
       badge_id: badgeId,
       proof_url: proofUrl,
-      repository: repository
+      repository: repository,
+      grade: "N/A"
     }
   };
 

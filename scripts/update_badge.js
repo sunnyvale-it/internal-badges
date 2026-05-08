@@ -9,6 +9,7 @@ async function updateBadge() {
   const level = process.env.PAYLOAD_LEVEL;
   const proof_url = process.env.PAYLOAD_PROOF_URL;
   const attempt_code = process.env.PAYLOAD_ATTEMPT_CODE;
+  const grade = process.env.PAYLOAD_GRADE;
 
   const badgeNames = {
     "secure-service-dev": "Secure Service Developer",
@@ -62,7 +63,8 @@ async function updateBadge() {
       metadata: {
         issuer: issuer || "Engineering Academy",
         level: level || "advanced",
-        attempt_code: attempt_code || "N/A"
+        attempt_code: attempt_code || "N/A",
+        grade: grade || "N/A"
       }
     };
 

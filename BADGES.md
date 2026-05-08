@@ -8,6 +8,6 @@ Here is the directory of all users and their dynamically rendered badges via Shi
 
 ### Secure Service Developer Certifications
 
-| User | Badge | Status | Level | Version | Issuer | Acquired At | Signature |
-|------|-------|--------|-------|---------|--------|-------------|-----------|
+| User | Badge | Status | Level | Grade | Version | Issuer | Acquired At | Signature |
+|------|-------|--------|-------|-------|---------|--------|-------------|-----------|
 

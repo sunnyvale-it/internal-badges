@@ -36,6 +36,7 @@ jobs:
           PAYLOAD_LEVEL: ${{ github.event.client_payload.level }}
           PAYLOAD_PROOF_URL: ${{ github.event.client_payload.proof_url }}
           PAYLOAD_ATTEMPT_CODE: ${{ github.event.client_payload.attempt_code }}
+          PAYLOAD_GRADE: ${{ github.event.client_payload.grade }}
         run: |
           node scripts/update_badge.js
           

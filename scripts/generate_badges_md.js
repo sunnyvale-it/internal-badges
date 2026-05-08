@@ -29,8 +29,8 @@ Here is the directory of all users and their dynamically rendered badges via Shi
 
 ### Secure Service Developer Certifications
 
-| User | Badge | Status | Level | Version | Issuer | Acquired At | Signature |
-|------|-------|--------|-------|---------|--------|-------------|-----------|
+| User | Badge | Status | Level | Grade | Version | Issuer | Acquired At | Signature |
+|------|-------|--------|-------|-------|---------|--------|-------------|-----------|
 `;
 
   let tableRows = [];
@@ -51,6 +51,7 @@ Here is the directory of all users and their dynamically rendered badges via Shi
       const nameShield = `![Name](https://img.shields.io/badge/dynamic/json?url=${encodedUrl}&query=%24.name&label=Badge&color=black)`;
       const statusShield = `![Status](https://img.shields.io/badge/dynamic/json?url=${encodedUrl}&query=%24.status&label=Status&color=success)`;
       const levelShield = `![Level](https://img.shields.io/badge/dynamic/json?url=${encodedUrl}&query=%24.metadata.level&label=Level&color=blue)`;
+      const gradeShield = `![Grade](https://img.shields.io/badge/dynamic/json?url=${encodedUrl}&query=%24.metadata.grade&label=Grade&color=yellow)`;
       const versionShield = `![Version](https://img.shields.io/badge/dynamic/json?url=${encodedUrl}&query=%24.version&label=Version&color=orange)`;
       const issuerShield = `![Issuer](https://img.shields.io/badge/dynamic/json?url=${encodedUrl}&query=%24.metadata.issuer&label=Issuer&color=purple)`;
       const acquiredAtShield = `![Acquired At](https://img.shields.io/badge/dynamic/json?url=${encodedUrl}&query=%24.acquired_at&label=Acquired&color=lightgrey)`;
@@ -58,7 +59,7 @@ Here is the directory of all users and their dynamically rendered badges via Shi
       const sigUrl = `https://search.sigstore.dev/?hash=sha256:${sha256}`;
       const signatureShield = `[![Signature](https://img.shields.io/badge/Signature-Sigstore-blueviolet)](${sigUrl})`;
 
-      const row = `| **${user}** | ${nameShield} | ${statusShield} | ${levelShield} | ${versionShield} | ${issuerShield} | ${acquiredAtShield} | ${signatureShield} |`;
+      const row = `| **${user}** | ${nameShield} | ${statusShield} | ${levelShield} | ${gradeShield} | ${versionShield} | ${issuerShield} | ${acquiredAtShield} | ${signatureShield} |`;
       tableRows.push(row);
     }
   }
