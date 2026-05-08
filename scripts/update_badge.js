@@ -8,6 +8,7 @@ async function updateBadge() {
   const issuer = process.env.PAYLOAD_ISSUER;
   const level = process.env.PAYLOAD_LEVEL;
   const proof_url = process.env.PAYLOAD_PROOF_URL;
+  const attempt_code = process.env.PAYLOAD_ATTEMPT_CODE;
 
   const badgeNames = {
     "secure-service-dev": "Secure Service Developer",
@@ -60,7 +61,8 @@ async function updateBadge() {
       proof: proof_url || "github-actions-pass",
       metadata: {
         issuer: issuer || "Engineering Academy",
-        level: level || "advanced"
+        level: level || "advanced",
+        attempt_code: attempt_code || "N/A"
       }
     };
 
