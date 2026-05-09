@@ -9,6 +9,7 @@ function onFormSubmit(e) {
   const badgeId = e.namedValues['Badge ID'][0];
   const proofUrl = e.namedValues['Proof URL'][0];
   const repository = e.namedValues['Repository URL'] ? e.namedValues['Repository URL'][0] : '';
+  const attemptCode = e.namedValues['Attempt Code'] ? e.namedValues['Attempt Code'][0] : '';
   
   const payload = {
     event_type: "issue_badge",
@@ -17,7 +18,8 @@ function onFormSubmit(e) {
       badge_id: badgeId,
       proof_url: proofUrl,
       repository: repository,
-      grade: "N/A"
+      grade: "N/A",
+      attempt_code: attemptCode
     }
   };
 
