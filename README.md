@@ -90,7 +90,9 @@ echo '{
 
 ### Setup Instructions (Admin)
 
-1. **Scripts**: Validation and badge generation logic are located in the `scripts/` directory of this repository.
-2. **Secrets**: 
-   - Add a PAT with `repo` access to the Google Apps Script so it can trigger the `repository_dispatch` event on this repository.
-3. **Google Apps Script**: Copy the contents of `scripts/Code.gs` into your Google Sheet's Apps Script editor and set up an `onFormSubmit` trigger.
+Badge issuance is now completely automated via the `internal-quizzes` repository.
+
+When a quiz is generated via the CLI (`node import.js`), the Google Apps Script is automatically injected into the new form with an `onFormSubmit` trigger attached. The trigger evaluates the student's passing percentage and dispatches the `issue_badge` event.
+
+**Prerequisites:**
+1. You must set the `GITHUB_PAT` property once in the Google Apps Script Project Properties of your Clasp project in the `internal-quizzes` repository. This token requires `repo` scope to trigger the `repository_dispatch` event here.
