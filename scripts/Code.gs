@@ -25,10 +25,31 @@ function onFormSubmit(e) {
   } else if (challengeDataStr) {
     badgeId = challengeDataStr.trim();
   }
-  const proofUrl = e.namedValues['Proof URL'][0];
-  const repository = e.namedValues['Repository URL'] ? e.namedValues['Repository URL'][0] : '';
-  const attemptCode = e.namedValues['Attempt Code'] ? e.namedValues['Attempt Code'][0] : '';
+  let proofUrl = e.namedValues['Proof URL'] ? e.namedValues['Proof URL'][0] : '';
+  if (!proofUrl) {
+    // If there is no explicit proof URL, it's likely a native Google Form Quiz.
+    proofUrl = "Google Form Quiz Submission";
+  }
   
+  const repository = e.namedValues['Repository URL'] ? e.namedValues['Repository URL'][0] : '';
+  
+  let attemptCode = e.namedValues['Attempt Code'] ? e.namedValues['Attempt Code'][0] : '';
+  if (!attemptCode && e.namedValues) {
+    // Look for a key containing "attempt", "tentativo", or "code"
+    const attemptKey = Object.keys(e.namedValues).find(k => {
+      const lowerK = k.toLowerCase();
+      return (lowerK.includes('attempt') || lowerK.includes('tentativo') || lowerK.includes('codice')) || 
+             (lowerK.includes('code') && !lowerK.includes('url'));
+    });
+    if (attemptKey) attemptCode = e.namedValues[attemptKey][0];
+  }
+  
+  let grade = "N/A";
+  if (e.namedValues) {
+    const scoreKey = Object.keys(e.namedValues).find(k => k.toLowerCase().includes('score') || k.toLowerCase().includes('punteggio'));
+    if (scoreKey) grade = e.namedValues[scoreKey][0];
+  }
+
   const payload = {
     event_type: "issue_badge",
     client_payload: {
@@ -36,7 +57,7 @@ function onFormSubmit(e) {
       badge_id: badgeId,
       proof_url: proofUrl,
       repository: repository,
-      grade: "N/A",
+      grade: grade,
       attempt_code: attemptCode
     }
   };
