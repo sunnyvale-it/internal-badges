@@ -44,7 +44,11 @@ jobs:
         run: |
           USER_PAYLOAD="${{ github.event.client_payload.user }}"
           BADGE_ID_PAYLOAD="${{ github.event.client_payload.badge_id }}"
-          BADGE_FILE="badges/${USER_PAYLOAD}/${BADGE_ID_PAYLOAD}.json"
+          VERSION_PAYLOAD="${{ github.event.client_payload.version }}"
+          if [ -z "$VERSION_PAYLOAD" ]; then VERSION_PAYLOAD="1.0.0"; fi
+          LEVEL_PAYLOAD="${{ github.event.client_payload.level }}"
+          if [ -z "$LEVEL_PAYLOAD" ]; then LEVEL_PAYLOAD="advanced"; fi
+          BADGE_FILE="badges/${USER_PAYLOAD}/${BADGE_ID_PAYLOAD}-${VERSION_PAYLOAD}-${LEVEL_PAYLOAD}.json"
           
           BADGE_GENERATED="${{ steps.generate.outputs.badge_generated }}"
           

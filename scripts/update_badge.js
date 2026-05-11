@@ -25,14 +25,15 @@ async function updateBadge() {
   // The output directory is expected to be in the root repository
   // We assume the script runs from the scripts repo, so we go up one level
   const outputDir = path.join(__dirname, '..', 'badges', user);
-  const outputFile = path.join(outputDir, `${badge_id}.json`);
+  const TARGET_VERSION = version || "1.0.0";
+  const TARGET_LEVEL = level || "advanced";
+  const outputFile = path.join(outputDir, `${badge_id}-${TARGET_VERSION}-${TARGET_LEVEL}.json`);
 
   // Ensure directory exists
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
-  const TARGET_VERSION = version || "1.0.0";
 
   let shouldGenerate = true;
   if (fs.existsSync(outputFile)) {
