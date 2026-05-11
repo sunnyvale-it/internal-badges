@@ -4,9 +4,33 @@ This repository holds the generated badges for the Engineering Academy.
 
 ## How to get a badge
 
-1. Submit your challenge and proof via our internal Google Form.
-2. The system will automatically validate your submission using a secure pipeline.
-3. If successful, your badge will be generated and stored here.
+```mermaid
+sequenceDiagram
+    participant Grader as internal-grader<br/>(GitHub Actions)
+    participant Badges as internal-badges<br/>(GitHub Actions)
+    participant Scripts as Node.js Scripts
+    participant Sigstore as Sigstore<br/>(Cosign/Rekor)
+
+    Grader->>Badges: repository_dispatch (issue_badge)
+    
+    activate Badges
+    Badges->>Badges: Checkout Repository
+    Badges->>Scripts: node generate_badges_md.js
+    Scripts-->>Badges: Updates BADGES.md
+    
+    Badges->>Scripts: node update_badge.js
+    Scripts-->>Badges: Generates new badge.json
+    
+    rect rgb(255, 255, 204)
+    Note over Badges,Sigstore: Keyless Cryptographic Signing
+    Badges->>Sigstore: cosign sign-blob badge.json
+    Sigstore-->>Badges: Returns .bundle (Transparency Log & Cert)
+    end
+    
+    Badges->>Badges: git commit -m "Auto-issue badge"
+    Badges->>Badges: git push origin master
+    deactivate Badges
+```
 
 ## Cryptographic Authenticity (Sigstore Keyless Signing)
 
