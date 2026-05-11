@@ -26,8 +26,17 @@ function onFormSubmit(e) {
     badgeId = challengeDataStr.trim();
   }
   let proofUrl = e.namedValues['Proof URL'] ? e.namedValues['Proof URL'][0] : '';
-  if (!proofUrl) {
-    // If there is no explicit proof URL, it's likely a native Google Form Quiz.
+  if (!proofUrl && e.namedValues) {
+    // Encode the entire form response as a Base64 data URI to securely embed the student's 
+    // exact answers directly into the badge's cryptographic signature!
+    try {
+      const jsonResponse = JSON.stringify(e.namedValues);
+      const base64Response = Utilities.base64Encode(jsonResponse);
+      proofUrl = `data:application/json;base64,${base64Response}`;
+    } catch (err) {
+      proofUrl = "Google Form Quiz Submission";
+    }
+  } else if (!proofUrl) {
     proofUrl = "Google Form Quiz Submission";
   }
   
