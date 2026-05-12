@@ -1,0 +1,15 @@
+{
+  "badge_id": "secure-service-dev",
+  "name": "Secure Service Developer",
+  "version": "1.0.0",
+  "user": "denis.maggiorotto@sunnyvale.it",
+  "acquired_at": "2026-05-12",
+  "status": "active",
+  "proof": "https://drive.google.com/uc?export=download&id=1Pxs2oVnzhCd_tbkYOc5UyV46e4VAk5iT",
+  "metadata": {
+    "issuer": "Automated Grader",
+    "level": "advanced",
+    "attempt_code": "12345",
+    "grade": "100%"
+  }
+}
