@@ -1,64 +1,48 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<mxfile host="app.diagrams.net" modified="2026-05-11T10:00:00.000Z" agent="Mozilla/5.0" version="21.6.8" type="device">
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.2.8 Chrome/140.0.7339.240 Electron/38.4.0 Safari/537.36" version="28.2.8">
   <diagram id="b4dges-workfl0w" name="Badges Workflow">
-    <mxGraphModel dx="1434" dy="792" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="924" dy="482" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        
-        <mxCell id="node_grader" value="internal-grader&lt;br&gt;(GitHub Actions)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+        <mxCell id="node_grader" value="internal-grader&lt;br&gt;(GitHub Actions)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#000033;" parent="1" vertex="1">
           <mxGeometry x="80" y="240" width="120" height="60" as="geometry" />
         </mxCell>
-        
-        <mxCell id="node_badges_action" value="internal-badges&lt;br&gt;Action (issue_badge.yml)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="node_badges_action" value="internal-badges&lt;br&gt;Action (issue_badge.yml)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000033;" parent="1" vertex="1">
           <mxGeometry x="280" y="240" width="160" height="60" as="geometry" />
         </mxCell>
-        
-        <mxCell id="node_script_md" value="generate_badges_md.js" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="node_script_md" value="generate_badges_md.js" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000033;" parent="1" vertex="1">
           <mxGeometry x="520" y="140" width="160" height="60" as="geometry" />
         </mxCell>
-        
-        <mxCell id="node_script_json" value="update_badge.js" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="node_script_json" value="update_badge.js" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000033;" parent="1" vertex="1">
           <mxGeometry x="520" y="240" width="160" height="60" as="geometry" />
         </mxCell>
-        
-        <mxCell id="node_cosign" value="Cosign (Sigstore)&lt;br&gt;Keyless Signer" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+        <mxCell id="node_cosign" value="Cosign (Sigstore)&lt;br&gt;Keyless Signer" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000033;" parent="1" vertex="1">
           <mxGeometry x="520" y="340" width="160" height="60" as="geometry" />
         </mxCell>
-        
-        <mxCell id="node_repo" value="internal-badges&lt;br&gt;Repository" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="760" y="220" width="100" height="100" as="geometry" />
+        <mxCell id="node_repo" value="internal-badges&lt;br&gt;Repository" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="850" y="220" width="100" height="100" as="geometry" />
         </mxCell>
-
-        <!-- Edges -->
-        <mxCell id="edge_grader_action" value="dispatch" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="node_grader" target="node_badges_action">
+        <mxCell id="edge_grader_action" value="dispatch" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#FFFFFF;" parent="1" source="node_grader" target="node_badges_action" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        
-        <mxCell id="edge_action_md" value="Runs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="node_badges_action" target="node_script_md">
+        <mxCell id="edge_action_md" value="Runs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#FFFFFF;" parent="1" source="node_badges_action" target="node_script_md" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        
-        <mxCell id="edge_action_json" value="Runs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="node_badges_action" target="node_script_json">
+        <mxCell id="edge_action_json" value="Runs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#FFFFFF;" parent="1" source="node_badges_action" target="node_script_json" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        
-        <mxCell id="edge_action_cosign" value="Signs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="node_badges_action" target="node_cosign">
+        <mxCell id="edge_action_cosign" value="Signs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#FFFFFF;" parent="1" source="node_badges_action" target="node_cosign" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        
-        <mxCell id="edge_md_repo" value="Updates BADGES.md" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="node_script_md" target="node_repo">
+        <mxCell id="edge_md_repo" value="Updates BADGES.md" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;entryPerimeter=0;fontColor=#FFFFFF;" parent="1" source="node_script_md" target="node_repo" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        
-        <mxCell id="edge_json_repo" value="Generates badge.json" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="node_script_json" target="node_repo">
+        <mxCell id="edge_json_repo" value="Generates badge.json" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;fontColor=#FFFFFF;" parent="1" source="node_script_json" target="node_repo" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        
-        <mxCell id="edge_cosign_repo" value="Generates .bundle" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="node_cosign" target="node_repo">
+        <mxCell id="edge_cosign_repo" value="Generates .bundle" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;entryPerimeter=0;fontColor=#FFFFFF;" parent="1" source="node_cosign" target="node_repo" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
       </root>
     </mxGraphModel>
   </diagram>
