@@ -27,13 +27,9 @@ Here is the directory of all users and their dynamically rendered badges via Shi
 
 *(Note: If badges display as "invalid" or "not found", ensure that this repository is set to **Public** on GitHub and that the JSON files have been pushed to the \`master\` branch).*
 
-### Secure Service Developer Certifications
-
-| User | Badge | Status | Level | Grade | Version | Issuer | Acquired At | Signature |
-|------|-------|--------|-------|-------|---------|--------|-------------|-----------|
 `;
 
-  let tableRows = [];
+  let categories = {};
 
   const users = fs.readdirSync(badgesDir).filter(f => fs.statSync(path.join(badgesDir, f)).isDirectory());
 
@@ -60,14 +56,31 @@ Here is the directory of all users and their dynamically rendered badges via Shi
       const signatureShield = `[![Signature](https://img.shields.io/badge/Signature-Sigstore-blueviolet)](${sigUrl})`;
 
       const row = `| **${user}** | ${nameShield} | ${statusShield} | ${levelShield} | ${gradeShield} | ${versionShield} | ${issuerShield} | ${acquiredAtShield} | ${signatureShield} |`;
-      tableRows.push(row);
+      
+      const badgeData = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
+      const categoryName = badgeData.name || "Other";
+      if (!categories[categoryName]) {
+        categories[categoryName] = [];
+      }
+      categories[categoryName].push(row);
     }
   }
 
-  // Sort rows alphabetically by username
-  tableRows.sort();
+  let tablesMarkdown = '';
+  // Sort categories alphabetically
+  const sortedCategories = Object.keys(categories).sort();
+  
+  for (const category of sortedCategories) {
+    const rows = categories[category];
+    rows.sort(); // Sort rows alphabetically by username
+    
+    tablesMarkdown += `### ${category} Certifications\n\n`;
+    tablesMarkdown += `| User | Badge | Status | Level | Grade | Version | Issuer | Acquired At | Signature |\n`;
+    tablesMarkdown += `|------|-------|--------|-------|-------|---------|--------|-------------|-----------|\n`;
+    tablesMarkdown += rows.join('\n') + '\n\n';
+  }
 
-  const finalMarkdown = header + tableRows.join('\n') + '\n';
+  const finalMarkdown = header + tablesMarkdown;
   fs.writeFileSync(badgesMdFile, finalMarkdown, 'utf8');
   console.log('Successfully regenerated BADGES.md from scratch!');
 }
