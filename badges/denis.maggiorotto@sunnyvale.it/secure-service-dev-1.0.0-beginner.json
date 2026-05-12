@@ -1,0 +1,15 @@
+{
+  "badge_id": "secure-service-dev",
+  "name": "Secure Service Developer",
+  "version": "1.0.0",
+  "user": "denis.maggiorotto@sunnyvale.it",
+  "acquired_at": "2026-05-12",
+  "status": "active",
+  "proof": "https://docs.google.com/forms/d/1aAQ90YvBOdaq-LAqC-ZHnRoaU2qneUmYtj4wYNyzLfg/edit#response=2_ABaOnufT5xbhYfa_XSR_ClnN10DEVXta11vpN1Te1KzIz2C7ucjrs0SVgotFn1vH1qTnPaI",
+  "metadata": {
+    "issuer": "Secure Service Developer Quiz (Beginner) - beginner v1.0.0",
+    "level": "beginner",
+    "attempt_code": "7c0cc8c5-130f-4164-b9d1-d04ff8357cea",
+    "grade": "93%"
+  }
+}
