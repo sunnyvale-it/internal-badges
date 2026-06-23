@@ -1,0 +1,15 @@
+{
+  "badge_id": "secure-service-dev",
+  "name": "Secure Service Developer",
+  "version": "1.0.0",
+  "user": "maria.doro@sunnyvale.it",
+  "acquired_at": "2026-06-23",
+  "status": "active",
+  "proof": "https://drive.google.com/uc?export=download&id=1EAGpAVyPI37_4fW0IcvEJ5dkSBcZiT10",
+  "metadata": {
+    "issuer": "Automated Grader",
+    "level": "advanced",
+    "attempt_code": "1000020264",
+    "grade": "100%"
+  }
+}
