@@ -1,0 +1,15 @@
+{
+  "badge_id": "secure-service-dev",
+  "name": "Secure Service Developer",
+  "version": "1.0.0",
+  "user": "davide.digiovanni@sunnyvale.it",
+  "acquired_at": "2026-06-23",
+  "status": "active",
+  "proof": "https://drive.google.com/uc?export=download&id=19urBJz8YPrzL1ydlKe9MpiQW0C86sk8Q",
+  "metadata": {
+    "issuer": "Automated Grader",
+    "level": "advanced",
+    "attempt_code": "1000028159",
+    "grade": "100%"
+  }
+}
