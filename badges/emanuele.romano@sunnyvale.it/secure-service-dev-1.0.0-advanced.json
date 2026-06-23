@@ -1,0 +1,15 @@
+{
+  "badge_id": "secure-service-dev",
+  "name": "Secure Service Developer",
+  "version": "1.0.0",
+  "user": "emanuele.romano@sunnyvale.it",
+  "acquired_at": "2026-06-23",
+  "status": "active",
+  "proof": "https://drive.google.com/uc?export=download&id=1_dUTaDc7jQXotfLpxlUc3DssLQrHGZfV",
+  "metadata": {
+    "issuer": "Automated Grader",
+    "level": "advanced",
+    "attempt_code": "1000032282",
+    "grade": "100%"
+  }
+}
