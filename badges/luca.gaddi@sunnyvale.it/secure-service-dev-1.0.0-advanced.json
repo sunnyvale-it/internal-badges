@@ -1,0 +1,15 @@
+{
+  "badge_id": "secure-service-dev",
+  "name": "Secure Service Developer",
+  "version": "1.0.0",
+  "user": "luca.gaddi@sunnyvale.it",
+  "acquired_at": "2026-06-23",
+  "status": "active",
+  "proof": "https://drive.google.com/uc?export=download&id=1d4D2xe0s_gC0K7ndb07BF53ZGh4y7CYh",
+  "metadata": {
+    "issuer": "Automated Grader",
+    "level": "advanced",
+    "attempt_code": "1000004813",
+    "grade": "100%"
+  }
+}
