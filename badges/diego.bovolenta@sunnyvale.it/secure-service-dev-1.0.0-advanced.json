@@ -1,0 +1,15 @@
+{
+  "badge_id": "secure-service-dev",
+  "name": "Secure Service Developer",
+  "version": "1.0.0",
+  "user": "diego.bovolenta@sunnyvale.it",
+  "acquired_at": "2026-07-21",
+  "status": "active",
+  "proof": "https://drive.google.com/uc?export=download&id=1-32iQOvvBgHGLI1JZLQjARo61b795J_n",
+  "metadata": {
+    "issuer": "Automated Grader",
+    "level": "advanced",
+    "attempt_code": "1000012389",
+    "grade": "100%"
+  }
+}
