@@ -13,6 +13,7 @@ async function updateBadge() {
 
   const badgeNames = {
     "secure-service-dev": "Secure Service Developer",
+    "gdpr-nis2": "Apprendimento GDPR-NIS2",
     // Add other badge mappings here as needed
   };
   const resolvedBadgeName = badgeNames[badge_id] || badge_id;
