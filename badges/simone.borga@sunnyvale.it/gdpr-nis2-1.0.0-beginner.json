@@ -1,0 +1,15 @@
+{
+  "badge_id": "gdpr-nis2",
+  "name": "gdpr-nis2",
+  "version": "1.0.0",
+  "user": "simone.borga@sunnyvale.it",
+  "acquired_at": "2026-11-19",
+  "status": "active",
+  "proof": "https://docs.google.com/forms/d/13frFjRP3NhkZ8kDLXJuNa2A6Q2UbrpeXrcOaE0gH5zg/edit#response=2_ABaOnuc8-MdOOHhyruZCs1VwE2tRjg8Em32LCTCFW3QzMxMkR__xkuxEXwBGgg1Ogha4OFM",
+  "metadata": {
+    "issuer": "Apprendimento GDPR-NIS2 (Beginner) - beginner v1.0.0",
+    "level": "beginner",
+    "attempt_code": "6df1e6e4-7671-489e-9536-5925be74819c",
+    "grade": "100%"
+  }
+}
