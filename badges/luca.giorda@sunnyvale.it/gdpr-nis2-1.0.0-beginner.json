@@ -1,0 +1,15 @@
+{
+  "badge_id": "gdpr-nis2",
+  "name": "Apprendimento GDPR-NIS2",
+  "version": "1.0.0",
+  "user": "luca.giorda@sunnyvale.it",
+  "acquired_at": "2026-11-20",
+  "status": "active",
+  "proof": "https://docs.google.com/forms/d/13frFjRP3NhkZ8kDLXJuNa2A6Q2UbrpeXrcOaE0gH5zg/edit#response=2_ABaOnudwDmaDaMpvz0gT88PNL3LI9ycxRbQWQVtjwmcdtPJMSecHAgXCl3Y2hZkkOmN1sbE",
+  "metadata": {
+    "issuer": "Apprendimento GDPR-NIS2 (Beginner) - beginner v1.0.0",
+    "level": "beginner",
+    "attempt_code": "5f9746dc-267d-4d41-95d6-0e2b266e6345",
+    "grade": "97%"
+  }
+}
